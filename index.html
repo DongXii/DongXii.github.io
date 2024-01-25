@@ -45,7 +45,7 @@
                                         <nav class="theme-doc-breadcrumbs breadcrumbsContainer_Xlws" aria-label="breadcrumbs">
                                             <ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList">
                                               <li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active">
-                                                  <span class="breadcrumbs__link" itemprop="item name">基本介绍</span>
+                                                  <span class="breadcrumbs__link" itemprop="item name">基本介绍和用法示例</span>
                                                   <meta itemprop="position" content="2">
                                               </li>
                                             </ul>
@@ -65,13 +65,51 @@
                                           </p>
                                           <h2>参数说明</h2>
                                           <p>-u       后面跟需要测试的url</p>
-                                          <p>-m       爬取模式,如果需要尽可能多的触发网站元素,后面跟1,默认为0</p>
-                                          <p><del>-l       多目标,后面跟文件路径,该功能不能使用目前,有bug</del></p>
-                                          <p><del>-p       开启进程数,该功能不能使用目前,有bug</del></p>
+                                          <p>-m       爬取模式,如果需要尽可能多的触发网站元素,后面跟1(所需时间大幅度增加),默认为0</p>
+                                          <p><del>-l       多目标,后面跟文件路径,该功能目前不能使用</del></p>
+                                          <p><del>-p       开启进程数,该功能目前不能使用</del></p>
                                           <p>-ah      添加或更改 HTTP 请求的标头</p>
                                           <p>-acc     提供账号密码,形如{'admin':'123456'}</p>
+                                          <h2>文件说明</h2>
+                                          <p>
+                                            <h3>Conf/config.ini     配置文件</h3>
+                                            <img src= "">
+                                            其中email为邮箱配置,用于接收验证码邮件.使用<a href= "https://github.com/zhangyunhao116/zmail">zmail</a>配置<br>
+                                            chaojiying 为超级鹰账号配置<a href="https://www.chaojiying.com">超级鹰官网</a><br>
+                                            brower 为浏览器状态,0为无头浏览器,不需要图形化系统,1为正常浏览器,需要图形化系统
+                                            <h3>Data    数据保存</h3>
+                                            form 表单相关信息<br>
+                                            account 成功登录账号记录<br>
+                                            gif 前端截图<br>
+                                            match 输入表单记录
+                                            <h3>model    文本分类模型</h3>
+                                            <h3>Report    生成报告</h3>
+                                          </p>
+                                            <header>
+                                                <h1>用法示例</h1>
+                                            </header>
+                                          <p>
+                                            <code>./dongxi -u http://www.xxxxxx.com </code>
+                                            从起始url开始寻找登录表单,找到登录表单后继续寻找注册表单(如果未找到登录表单则会退出程序)
+                                            <img src="">
+                                            如果找到注册表单则尝试自动注册(该免费版可以完成大多数邮箱注册,通过完成邮箱配置接收动态验证码),
+                                            如果完成超级鹰配置,可以通过大多数图片、点击验证码和一些滑块验证码
+                                            <img src="">
+                                            成功注册后会保存注册账号信息
+                                            另:使用-acc参数提供账号也会保存账号信息
+                                            <code>./dongxi -u http://www.xxxxxx.com -acc {'17739527180':'#R9A^1rS*%'}</code>
+                                            <img src="">
+                                            然后开始登录,如果有账号信息则使用账号信息
+                                            没有则使用admin/123456进行尝试登录
+                                            成功登录则保存登录信息继续进行,未成功则退出程序
+                                            另:使用-ah参数 直接提供登录信息将直接进行下一步
+                                            <code>./dongxi -u http://www.xxxxxx.com -ah {'Cookie': 'PHPSESSID=ran2nqaq3rgdsl1234d7drjv8h'}</code>
+                                            爬取登录后的相关页面通过html相似度进行去重,提取表单进行测试
+                                            最后生成html报告
+                                          </p>
                                         </div>
                                     </article>
+                                    
                                     <img src="./截屏2024-01-04 22.17.58.png">
                                     <nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages navigation">
                                         <div class="pagination-nav__item"></div>
