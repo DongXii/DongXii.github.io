@@ -66,8 +66,8 @@
                                           <h2>参数说明</h2>
                                           <p>-u       后面跟需要测试的url</p>
                                           <p>-m       爬取模式,如果需要尽可能多的触发网站元素,后面跟1(所需时间大幅度增加),默认为0</p>
-                                          <p><del>-l       多目标,后面跟文件路径,该功能目前不能使用</del></p>
-                                          <p><del>-p       开启进程数,该功能目前不能使用</del></p>
+                                          <p>-l       多目标,后面跟文件路径</p>
+                                          <p>-p       多目标使用参数,开启进程数</p>
                                           <p>-ah      添加或更改 HTTP 请求的标头</p>
                                           <p>-acc     提供账号密码,形如{'admin':'123456'}</p>
                                           <h2>文件说明</h2>
@@ -106,6 +106,9 @@
                                             <code>./dongxi -u http://www.xxxxxx.com -ah {'Cookie': 'PHPSESSID=ran2nqaq3rgdsl1234d7drjv8h'}</code>
                                             爬取登录后的相关页面通过html相似度进行去重,提取表单进行测试
                                             最后生成html报告
+                                            多目标使用示例
+                                            <code>./dongxi -l urls.txt -p 4</code>
+                                            -p 后面跟开启进程数
                                           </p>
                                         </div>
                                     </article>
